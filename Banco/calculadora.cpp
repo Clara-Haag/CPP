@@ -1,4 +1,7 @@
 # include <iostream>
+# include <string>
+# include <iomanip>
+
 using namespace std;
 
 int main(){
@@ -31,6 +34,22 @@ int main(){
         case 2:
         {
             cout << "Você selecionou: CÁLCULO DE CÂMBIO" << endl;
+            float vlr_inicial, cambio;
+            string moeda; 
+
+            cout << "Informe o valor a ser convertido: ";
+            cin >> vlr_inicial;
+
+            cout << "Informe a moeda: ";
+            cin >> moeda;
+
+            cout << "Informe o câmbio: ";
+            cin >> cambio;
+
+            float total = vlr_inicial * cambio;
+
+            cout << fixed << setprecision(2) << "O total convertido é de: " << total << " " << moeda << "s" << endl;
+
             break;
         }
         case 3:
