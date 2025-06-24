@@ -1,0 +1,99 @@
+#include <iostream>
+#include <time.h>
+using namespace std;
+#define tam 4
+int main(){
+    srand(time(NULL));
+    
+    int matprincipal[tam][tam]{1,4,5,2,7,2,8,7,3,6,1,4,6,5,3,8}, i,j, lista, matgabarito[tam][tam], matjogo[tam][tam]{0},l1,c1,l2,c2,njogada=0, tentnova;
+    
+    do{
+        lista = rand()%4 + 1;
+        switch(lista){
+            case 1:
+                for(i = 0; i < tam; i++){
+                    for(j = 0; j< tam; j++){
+                       matgabarito[i][j] = matprincipal[i][j];
+                    }
+                }
+                break;
+            case 2:
+                for(i = 0; i < tam; i++){
+                    for(j = 0; j< tam; j++){
+                       matgabarito[i][j] = matprincipal[j][i];
+                    }
+                }
+                break;
+            case 3: 
+                for(i = 0; i < tam; i++){
+                    for(j = 0; j< tam; j++){
+                       matgabarito[i][j] = matprincipal[tam - 1 - i][j];
+                    }
+                }
+                break;
+            case 4:
+                for(i = 0; i < tam; i++){
+                    for(j = 0; j< tam; j++){
+                       matgabarito[i][j] = matprincipal[i][tam - 1 - j];
+                    }
+                }
+                break;
+        }
+        do{
+            njogada ++;
+            do{       
+                cout << "informe o numero da linha da primeira peça" << endl;
+                cin >> l1;
+                l1 = l1 - 1;
+                cout << "informe o numero da coluna da primeira peça"<< endl;
+                cin >> c1;
+                c1 = c1 - 1;   
+                cout << "informe o numero da linhada segunda peça" << endl;
+                cin >> l2;
+                l2 = l2 - 1;
+                cout << "informe o numero da colunada segunda peça"<< endl;
+                cin >> c2;
+                c2 = c2 - 1;
+        
+                if(l1 > tam - 1 or l1 < 0 or c1 > tam - 1 or c1 < 0 or l2 > tam - 1 or l2 < 0 or c2 > tam - 1 or c2 < 0 or (l1 == l2 and c1 == c2) or matjogo[l1][c1] != 0 or matjogo[l2][c2] != 0){
+                    cout << "jogada invalida"<< endl;
+                }
+            } while(l1 > tam - 1 or l1 < 0 or c1 > tam - 1 or c1 < 0 or l2 > tam - 1 or l2 < 0 or c2 > tam - 1 or c2 < 0 or (l1 == l2 and c1 == c2) or matjogo[l1][c1] != 0 or matjogo[l2][c2] != 0);
+               
+            matjogo[l1][c1] = matgabarito[l1][c1];
+            matjogo[l2][c2] = matgabarito[l2][c2];
+            cout << "numero de tentativas realizadas: " << njogada << endl;
+            for(i = 0; i < tam; i++){
+                for(j = 0; j< tam; j++){
+                    cout << matjogo[i][j] << "\t";
+                }
+                cout<< endl;
+            }
+            if (matjogo[l1][c1] != matjogo[l2][c2]){
+                matjogo[l1][c1] = 0;
+                matjogo[l2][c2] = 0;
+                cout << "jogada NOK" << endl;
+            }else{
+                cout <<"jogada OK" << endl;
+            }
+            cin.ignore();
+            cin.ignore();
+            cout<<"\033c";
+           
+        }while(njogada < 24 and (matjogo[0][0] == 0 or matjogo[0][1] == 0 or matjogo[0][2] == 0 or matjogo[0][3] == 0 or matjogo[1][0] == 0 or matjogo[1][1] == 0 or matjogo[1][2] == 0 or matjogo[1][3] == 0 or matjogo[2][0] == 0 or matjogo[2][1] == 0 or matjogo[2][2] == 0 or matjogo[2][3] == 0 or matjogo[3][0] == 0 or matjogo[3][1] == 0 or matjogo[3][2] == 0 or matjogo[3][3] == 0));
+        if (njogada >= 24 ){
+            cout << "você perdeu"<< endl;
+        }else{
+            cout << "você venceu"<< endl;
+        }
+        do{
+            cout << "quer jogar navamente \n 1 - sim \n 2 - não" << endl;
+            cin >> tentnova;
+            if (tentnova < 1 or tentnova > 2){
+                cout <<"numero invalido";
+            }
+        } while(tentnova < 1 or tentnova > 2);
+        cin.ignore();
+        cout<<"\033c";
+    }while (tentnova == 1);    
+}  
