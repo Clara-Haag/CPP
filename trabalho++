@@ -62,7 +62,7 @@ int main(){
                 c2 = c2 - 1;
         
                 if(l1 > tam - 1 or l1 < 0 or c1 > tam - 1 or c1 < 0 or l2 > tam - 1 or l2 < 0 or c2 > tam - 1 or c2 < 0 or (l1 == l2 and c1 == c2) or matjogo[l1][c1] != 0 or matjogo[l2][c2] != 0){
-                    cout << "jogada invalida"<< endl; // Validação de resposta: se for informada uma pessoa inexistente (coluna ou linha inválida)
+                    cout << "jogada invalida"<< endl; // Validação de resposta: se for informada uma peça inexistente (coluna ou linha inválida)
                 }
             } while(l1 > tam - 1 or l1 < 0 or c1 > tam - 1 or c1 < 0 or l2 > tam - 1 or l2 < 0 or c2 > tam - 1 or c2 < 0 or (l1 == l2 and c1 == c2) or matjogo[l1][c1] != 0 or matjogo[l2][c2] != 0);
               
