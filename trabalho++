@@ -66,15 +66,20 @@ int main(){
                 }
             } while(l1 > tam - 1 or l1 < 0 or c1 > tam - 1 or c1 < 0 or l2 > tam - 1 or l2 < 0 or c2 > tam - 1 or c2 < 0 or (l1 == l2 and c1 == c2) or matjogo[l1][c1] != 0 or matjogo[l2][c2] != 0);
               
+            // revela peças swlecionadas
             matjogo[l1][c1] = matgabarito[l1][c1];
             matjogo[l2][c2] = matgabarito[l2][c2];
+
             cout << "numero de tentativas realizadas: " << njogada << endl;
+          
             for(i = 0; i < tam; i++){
+                // loop de formação da matriz
                 for(j = 0; j< tam; j++){
                     cout << matjogo[i][j] << "\t";
                 }
                 cout<< endl;
             }
+  
             // Validação da jogada
             if (matjogo[l1][c1] != matjogo[l2][c2]){
                 matjogo[l1][c1] = 0;
@@ -83,6 +88,7 @@ int main(){
             }else{
                 cout <<"jogada OK" << endl;
             }
+            
             cin.ignore();
             cin.ignore();
             cout<<"\033c";
